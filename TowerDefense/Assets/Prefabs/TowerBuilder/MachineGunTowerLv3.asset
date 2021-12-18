@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c8969a4ab77e1409664498d592aaba, type: 3}
+  m_Name: MachineGunTowerLv3
+  m_EditorClassIdentifier: 
+  nameTower: MachineGun Lv3
+  description: "S\xFAng b\u1EAFn li\xEAn thanh"
+  upgradeDescription: "\u0110\xE3 \u0111\u1EA1t c\u1EA5p \u0111\u1ED9 cao nh\u1EA5t"
+  enegry: 15
+  selEnegry: 12
+  speedAttack: 0.1
+  damge: 40

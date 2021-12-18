@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c8969a4ab77e1409664498d592aaba, type: 3}
+  m_Name: LaserTowerLv3
+  m_EditorClassIdentifier: 
+  nameTower: Laser Lv3
+  description: "\u0110\u1EA1n laser"
+  upgradeDescription: "\u0110\xE3 \u0111\u1EA1t c\u1EA5p \u0111\u1ED9 cao nh\u1EA5t"
+  enegry: 50
+  selEnegry: 35
+  speedAttack: 1.6
+  damge: 700
