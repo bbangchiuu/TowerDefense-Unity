@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using TowerDefense.Nodes;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
     [SerializeField]
-    Node nodeStart;
+    NodeLocation nodeStart;
 
     [SerializeField]
     GameObject[] enemiesCreep;

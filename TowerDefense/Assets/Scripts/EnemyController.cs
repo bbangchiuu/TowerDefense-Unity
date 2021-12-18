@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TowerDefense.Nodes;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     
-    public Node destination;
+    public NodeLocation destination;
 
     public bool isDead = false;
 
@@ -46,7 +45,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Initialize(int level, Node nodeSelect)
+    public void Initialize(int level, NodeLocation nodeSelect)
     {
         destination = nodeSelect;
         maxHealth = currentInfoEnemy.startHealth + currentInfoEnemy.upgradeHealth * level;
@@ -99,7 +98,7 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        Node nodeSelect = other.GetComponent<Node>();
+        NodeLocation nodeSelect = other.GetComponent<NodeLocation>();
         if (nodeSelect != null && nodeSelect.GetNextNode() != null)
         {
             destination = nodeSelect.GetNextNode();
