@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TowerDefense.Nodes;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
     [SerializeField]
-    Transform nodeEnd, nodeStart;
+    Node nodeStart;
 
     [SerializeField]
     GameObject[] enemiesCreep;
@@ -180,8 +181,8 @@ public class SpawnEnemies : MonoBehaviour
         spawnEnemyTime += Time.deltaTime;
         if (spawnEnemyTime >= resetSpawnTime)
         {
-            EnemyController enemy = Instantiate(enemiesCreep[indexEnemy], nodeStart.position, nodeStart.rotation).GetComponent<EnemyController>();
-            enemy.Initialize(levelCreep, nodeEnd);
+            EnemyController enemy = Instantiate(enemiesCreep[indexEnemy], nodeStart.transform.position, nodeStart.transform.rotation).GetComponent<EnemyController>();
+            enemy.Initialize(levelCreep, nodeStart.GetNextNode());
             spawnEnemyTime = 0;
             currentQuantityEnemy++;
         }
@@ -192,8 +193,8 @@ public class SpawnEnemies : MonoBehaviour
         spawnEnemyTime += Time.deltaTime;
         if (spawnEnemyTime >= resetSpawnTime)
         {
-            EnemyController enemy = Instantiate(enemiesSuperCreep[indexEnemy], nodeStart.position, nodeStart.rotation).GetComponent<EnemyController>();
-            enemy.Initialize(levelSuperCreep, nodeEnd);
+            EnemyController enemy = Instantiate(enemiesSuperCreep[indexEnemy], nodeStart.transform.position, nodeStart.transform.rotation).GetComponent<EnemyController>();
+            enemy.Initialize(levelSuperCreep, nodeStart.GetNextNode());
             spawnEnemyTime = 0;
             currentQuantityEnemy++;
         }
@@ -201,13 +202,13 @@ public class SpawnEnemies : MonoBehaviour
 
     void SpawnEnemyBossCommon()
     {
-        EnemyController enemy = Instantiate(enemyBoss, nodeStart.position, nodeStart.rotation).GetComponent<EnemyController>();
-        enemy.Initialize(levelBoss, nodeEnd);
+        EnemyController enemy = Instantiate(enemyBoss, nodeStart.transform.position, nodeStart.transform.rotation).GetComponent<EnemyController>();
+        enemy.Initialize(levelBoss, nodeStart.GetNextNode());
     }
 
     void SpawnEnemyBossSuper()
     {
-        EnemyController enemy = Instantiate(enemySuperBoss, nodeStart.position, nodeStart.rotation).GetComponent<EnemyController>();
-        enemy.Initialize(levelSuperBoss, nodeEnd);
+        EnemyController enemy = Instantiate(enemySuperBoss, nodeStart.transform.position, nodeStart.transform.rotation).GetComponent<EnemyController>();
+        enemy.Initialize(levelSuperBoss, nodeStart.GetNextNode());
     }
 }

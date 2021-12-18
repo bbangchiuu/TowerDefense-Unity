@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TowerDefense.Nodes;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +8,8 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     
-    public Transform destination;
+    public Node destination;
+
     public bool isDead = false;
 
     public InforEnemy currentInfoEnemy;
@@ -40,13 +42,13 @@ public class EnemyController : MonoBehaviour
     {
         if(destination != null && !isDead)
         {
-            agent.destination = destination.position;
+            agent.destination = destination.transform.position;
         }
     }
 
-    public void Initialize(int level, Transform nodeEnd)
+    public void Initialize(int level, Node nodeSelect)
     {
-        destination = nodeEnd;
+        destination = nodeSelect;
         maxHealth = currentInfoEnemy.startHealth + currentInfoEnemy.upgradeHealth * level;
         currentHealth = maxHealth;
         currentDamage = currentInfoEnemy.startDamage + currentInfoEnemy.upgradeDamage * level;
@@ -90,10 +92,17 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(Dead(1f));
     }
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("NodeEnd"))
+    {        
+        if (other.GetComponent<MyHomeBase>() != null)
         {
             Destroy(gameObject);
+            return;
+        }
+
+        Node nodeSelect = other.GetComponent<Node>();
+        if (nodeSelect != null && nodeSelect.GetNextNode() != null)
+        {
+            destination = nodeSelect.GetNextNode();
         }
     }
 
