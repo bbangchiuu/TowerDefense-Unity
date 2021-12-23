@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +8,6 @@ public class PauseGameMenu : MonoBehaviour
     GameObject buttonPause;
     [SerializeField]
     GameObject pauseMenu;
-    bool isPause = false;
     [SerializeField]
     Image icon;
 
@@ -30,7 +27,6 @@ public class PauseGameMenu : MonoBehaviour
         Time.timeScale = 0;
         icon.sprite = iconPlay;
         pauseMenu.SetActive(true);
-        isPause = true;
     }
 
     public void OnClickResume()
@@ -38,7 +34,6 @@ public class PauseGameMenu : MonoBehaviour
         Time.timeScale = 1;
         icon.sprite = iconPause;
         pauseMenu.SetActive(false);
-        isPause = false;
     }
 
     public void OnClickMainMenu()

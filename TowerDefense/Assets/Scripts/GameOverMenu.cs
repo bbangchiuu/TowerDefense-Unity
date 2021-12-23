@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour
 {
     public GameObject panelSaveScore;
+    public GameObject textError;
     public Text textScore;
 
     public int playerScore;
@@ -26,6 +28,7 @@ public class GameOverMenu : MonoBehaviour
         playerScore = currentScore;
         textScore.text = playerScore + "";
         gameObject.SetActive(true);
+        textError.SetActive(false);
     }
 
     public void OnClickMainMenu()
@@ -65,13 +68,26 @@ public class GameOverMenu : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("name", name);
         form.AddField("score", score);
-        WWW www = new WWW(Helper.base_url + Helper.AddPlayer, form);
-        yield return www;
-        OnClickMainMenu();
+
+        UnityWebRequest www = UnityWebRequest.Post(Helper.base_url + Helper.AddPlayer, form);
+        yield return www.SendWebRequest();
+
+        if(www.result == UnityWebRequest.Result.Success)
+        {
+            OnClickMainMenu();
+        }
+        else
+        {
+            Debug.Log(www.error);
+            textError.SetActive(true);
+        }
+        
     }
 
     public void ClosePanelSaveScore()
     {
         panelSaveScore.gameObject.SetActive(false);
+        btnSaveScore.enabled = true;
+        textError.SetActive(false);
     }
 }
