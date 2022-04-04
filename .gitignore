@@ -58,3 +58,11 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Library
+/TowerDefense/Logs
+/TowerDefense/obj
+/TowerDefense/UserSettings
+/TowerDefense/*.vsconfig
+/TowerDefense/app.config
+/TowerDefense/packages.config
+/TowerDefense/Library
